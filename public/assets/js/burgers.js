@@ -2,7 +2,7 @@
 $(function() {
     $(".change-eat").on("click", function(event) {
       var id = $(this).data("id");
-      var newSleep = $(this).data("neweat");
+      var newEat= $(this).data("neweat");
   
       var newEat = {
         hungry: newEat
@@ -11,7 +11,7 @@ $(function() {
 
       $.ajax("/api/burger/" + id, {
         type: "PUT",
-        data: newSleepState
+        data: newEAT
       }).then(
         function() {
           console.log("changed eat to", newEat);
@@ -25,18 +25,18 @@ $(function() {
       
       event.preventDefault();
   
-      var newCat = {
+      var newBurger = {
         name: $("#ca").val().trim(),
         sleepy: $("[name=eat]:checked").val().trim()
       };
   
       $.ajax("/api/burgers", {
         type: "POST",
-        data: newCat
+        data: newBurger
       }).then(
         function() {
           console.log("created new burger");
-          // Reload the page to get the updated list
+        
           location.reload();
         }
       );
