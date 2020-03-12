@@ -3,7 +3,7 @@ var express = require("express");
 var router = express.Router();
 
 
-var cat = require("../models/burgers.js");
+var burger = require("../models/burger.js");
 
 
 router.get("/", function(req, res) {
@@ -17,10 +17,10 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-  cat.create([
+  burger.create([
     "name", "eat"
   ], [
-    req.body.name, req.body.sleepy
+    req.body.name, req.body.eat
   ], function(result) {
    
     res.json({ id: result.insertId });
@@ -32,8 +32,8 @@ router.put("/api/burgers/:id", function(req, res) {
 
   console.log("condition", condition);
 
-  cat.update({
-    sleepy: req.body.sleepy
+  burger.update({
+    eat: req.body.eat
   }, condition, function(result) {
     if (result.changedRows == 0) {
  
@@ -44,18 +44,7 @@ router.put("/api/burgers/:id", function(req, res) {
   });
 });
 
-router.delete("/api/burger/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
 
-  cat.delete(condition, function(result) {
-    if (result.affectedRows == 0) {
-      
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
-  });
-});
 
 
 module.exports = router;
