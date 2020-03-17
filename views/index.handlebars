@@ -3,9 +3,9 @@
 <h2>Eat one for lunch</h2>
 
 <ul>
-  {{#each burger}}
-    {{#unless try one today}}
-      {{> burgers/burger-block Eat=true}}
+  {{#each burgers}}
+    {{#unless this.devoured}}
+     <li>{{this.burger}}<button>Devour it</button></li>
     {{/unless}}
   {{/each}}
 </ul>
@@ -21,18 +21,12 @@
 </ul>
 
 <h2>Eat-Da-Burger</h2>
-<form class="create-form">
+<form class="create-form" action= "/api/burgers" method="post">
 
   <div class="form-group">
     <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+    <input type="text" id="ca" name="burger">
   </div>
 
-  <div class="form-group">
-    <label for="Hungry">Hungry</label><br>
-    <input type="radio" name="hungry" value="1" checked> Burger!<br>
-    <input type="radio" name="Full" value="0"> Eaten
-  </div>
-
-  <button type="submit">Eat Burger</button>
+   <button type="submit">Eat Burger</button>
 </form>

@@ -3,10 +3,10 @@
 CREATE DATABASE burger_db;
 USE burger_db;
 
-CREATE TABLE burgers
+CREATE TABLE burger
 (
 	id int NOT NULL AUTO_INCREMENT,
-	burgers varchar(255) NOT NULL,
+	burger varchar(255) NOT NULL,
 	devoured BOOLEAN DEFAULT false,
 	PRIMARY KEY (id)
 );

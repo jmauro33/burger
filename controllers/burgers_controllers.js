@@ -7,7 +7,7 @@ var burger = require("../models/burger.js");
 
 
 router.get("/", function(req, res) {
-  cat.all(function(data) {
+  burger.all(function(data) {
     var hbsObject = {
       burgers: data
     };
@@ -18,12 +18,12 @@ router.get("/", function(req, res) {
 
 router.post("/api/burgers", function(req, res) {
   burger.create([
-    "name", "eat"
+    "burger",
   ], [
-    req.body.name, req.body.eat
+    req.body.burger
   ], function(result) {
    
-    res.json({ id: result.insertId });
+  res.redirect("/")
   });
 });
 
